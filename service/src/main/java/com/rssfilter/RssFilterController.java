@@ -1,29 +1,35 @@
 package com.rssfilter;
 
-import com.sun.syndication.feed.synd.SyndContent;
 import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.io.SyndFeedInput;
 import com.sun.syndication.io.SyndFeedOutput;
 import com.sun.syndication.io.XmlReader;
+import org.jdom.Content;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.w3c.dom.Document;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.net.URL;
+
+import org.jdom.Element;
+
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 
 /**
- * Created by volha on 12/22/16.
+ * Implements rss filtering by specified keyword ignore register
  */
 @Controller
 @RequestMapping("/rssfilter")
 public class RssFilterController {
     @RequestMapping(method = RequestMethod.GET, produces = "application/xml")
-    public void getRss(HttpServletResponse response, @RequestParam("url") String url, @RequestParam("keyword") String keyword) {
+    public void getRss(HttpServletRequest request, HttpServletResponse response, @RequestParam("url") String url, @RequestParam("keyword") String keyword) {
         try {
+            request.setCharacterEncoding("UTF-8");
             keyword = keyword.toLowerCase();
             URL rssUrl = new URL(url);
             SyndFeedInput input = new SyndFeedInput();
@@ -32,14 +38,30 @@ public class RssFilterController {
             Iterator feedIterator = feed.getEntries().iterator();
             while (feedIterator.hasNext()) {
                 SyndEntry entry = (SyndEntry) feedIterator.next();
-                String  description = entry.getDescription() != null ? entry.getDescription().getValue().toLowerCase() : "";
+                String description = "";
                 String title = entry.getTitle().toLowerCase();
+                ArrayList<Element> elements = (ArrayList<Element>) entry.getForeignMarkup();
+
+                //Trying to get youtube description
+                for (Element element : elements) {
+                    if ("group".equals(element.getName()) && "media".equals(element.getNamespacePrefix())) {
+                        List<Content> subElements = element.getContent();
+                        for (Content subElement : subElements) {
+                            if (subElement instanceof Element) {
+                                if ("description".equals(((Element) subElement).getName())) {
+                                    description = subElement.getValue().toLowerCase();
+                                }
+                            }
+                        }
+                    }
+                }
+
                 if (!title.contains(keyword) && !description.contains(keyword)) {
                     feedIterator.remove();
                 }
             }
+
             SyndFeedOutput output = new SyndFeedOutput();
-            String string = output.outputString(feed);
             response.setCharacterEncoding("UTF-8");
             output.output(feed, response.getWriter());
 
