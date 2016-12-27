@@ -13,6 +13,9 @@
         <junit.version>3.8.1</junit.version>
         <javax.servlet.version>3.1.0</javax.servlet.version>
         <rom.version>1.0</rom.version>
+        <com.google.apis.version>v3-rev180-1.22.0</com.google.apis.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
     <dependencies>
         <dependency>
@@ -51,6 +54,11 @@
             <groupId>rome</groupId>
             <artifactId>rome</artifactId>
             <version>${rom.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.apis</groupId>
+            <artifactId>google-api-services-youtube</artifactId>
+            <version>${com.google.apis.version}</version>
         </dependency>
     </dependencies>
     <build>
