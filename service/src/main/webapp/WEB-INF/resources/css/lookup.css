@@ -1,0 +1,270 @@
+
+body {
+    background-color: #eeeeee;
+    margin: 0 auto;
+    font-family: 'Open Sans', sans-serif;
+}
+
+tr.channelRow:hover {
+    background: #eeeeee;
+    cursor: pointer;
+    cursor: hand;
+}
+
+tr.channelRow {
+    text-align: left;
+    border-bottom: 8px solid #eeeeee;
+    background-color: #ffffff;
+}
+
+tr.channelRow td {
+    padding-right: 15px;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 0 auto
+}
+
+div#sitebackground {
+    position: absolute;
+    top: 0px;;
+    left: 0px;
+    right: 0px;
+    height: 930px;
+    background-color: #eae6e6;
+    text-align: center;
+    color: #4D4D4D;
+}
+
+div {
+    display: block;
+}
+
+.header-menu {
+    float: right;
+    color: #EEEEEE;
+    font-size: 11pt;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    vertical-align: baseline;
+    background: transparent;
+    list-style-type: none;
+}
+
+.header-menu a {
+    display: block;
+    padding: 0px 7px 0px 7px;
+    color: #fff;
+    text-decoration: none;
+}
+
+#header-wrapper, #footer {
+    width: 100%;
+}
+
+#header {
+    height: 10px;
+    color: #EEEEEE;
+    width: 100%;
+    background: #555555;
+    margin: 0px auto;
+    text-align: right;
+    font-size: 11pt;
+}
+
+#logo-search-wrapper {
+    width: 100%;
+    height: 70px;
+    background-color: #222222;
+}
+
+#logo-search {
+    width: 1260px;
+    height: 70px;
+    margin: 0px auto;
+}
+
+#logo {
+    width: 260px;
+    height: 64px;
+    margin: 0px;
+    float: left;
+    padding-top: 15px;
+}
+
+.logo-image {
+    width: 32px;
+    height: 32px;
+    float: left;
+}
+
+.logo-text {
+    display: inline-block;
+    height: 50px;
+    padding: 3px;
+    padding-left: 10px;
+    font-family: sans-serif;
+    font-size: 25px;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#top-search {
+    width: 1000px;
+    height: 64px;
+    margin: 0px;
+    float: left;
+}
+
+#top-search-holder {
+    width: 400px;
+    height: 30px;
+    line-height: 30px;
+    margin-top: 9px;
+    margin-right: 3px;
+    float: right;
+    background: #222222;
+}
+
+#topChannelSearchInput {
+    border-radius: 5px;
+    height: 30px;
+    margin: 11px 0px;
+    width: 350px;
+    padding: 0px 20px;
+    border: 0px;
+    background: #fff;
+    color: #666;
+    outline: none;
+    float: left;
+    position: absolute;
+    font-size: 12px;
+}
+
+.top-search-button {
+    border: 0px;
+    width: 30px;
+    height: 30px;
+    line-height: 45px;
+    margin: 11px 0px 5px 312px;
+    color: #333;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.top-search-button span {
+    display: inline-block;
+    background: url("/resources/images/search-icon.png") no-repeat center center;
+    width: 25px;
+    height: 25px;
+
+}
+
+.youtube-icon {
+    display: inline-block;
+    background-image: url(https://cdn1.iconfinder.com/data/icons/logotypes/32/youtube-512.png);
+    background-size: 38px, 38px;
+    background-position: 0, 0;
+    width: 38px;
+    height: 30px;
+    line-height: 30px;
+    margin: 10px 10px 5px;
+}
+
+#top-red-line {
+    background-color: #e04e43;
+    width: 100%;
+    height: 20px;
+}
+
+#main-block {
+    width: 100%;
+    height: 100% ;
+    background-color: #333333;
+    background: url("/resources/images/main-background.jpg");
+}
+
+#main-text {
+    padding: 120px 80px 50px 80px;
+    width: 800px;
+    text-align: center;
+    margin: 0px auto;
+    color: white;
+}
+
+#main-text h1 {
+    padding-bottom: 20px;
+    text-transform: uppercase;
+    font-size: 3.0em;
+    line-height: 1em;
+}
+
+#main-text h4 {
+    font-weight: normal;
+    color: #dddddd;
+}
+
+#main-search {
+    width: 800px;
+    margin: 0px auto;
+}
+
+.input-style {
+    float: left;
+    height: 60px;
+    line-height: 60px;
+    padding: 0px 30px;
+    background: #fff;
+    width: 670px;
+    vertical-align: middle;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+#search-button {
+    border-radius: 5px;
+    float: right;
+    border: 0px;
+    height: 60px;
+    width: 120px;
+    color: #fff;
+    cursor: pointer;
+    cursor: hand;
+    display: inline-block;
+    background: #2483c1 url("/resources/images/search-icon-white.png") no-repeat center center;
+}
+
+#statistic {
+    line-height: 100px;
+    text-align: center;
+    color: #bbb;
+    margin-top: 160px;
+    font-size: 12px;
+}
+
+.statistic-block {
+    padding: 0px 60px;
+    font-size: 1.7em;
+    font-weight: 200;
+
+}
+
+.footer-block {
+    font-size: 1.7em;
+    font-weight: 200;
+}
+
+#footer {
+    text-align: center;
+    font-size: 0.6em;
+    color: #bbb;
+}
+
