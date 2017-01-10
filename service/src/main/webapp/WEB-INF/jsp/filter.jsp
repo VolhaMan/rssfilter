@@ -7,20 +7,7 @@
     <script src="/resources/js/lookup.js"></script>
     <link rel="stylesheet" type="text/css" href="/resources/css/lookup.css">
     <title>Youtube rss feed filter</title>
-    <script language="javascript">
 
-        function showRss() {
-            var keyword = document.getElementById("rss-keyword").value;
-
-            document.getElementById("rss-link").style.display = "block";
-            var location = window.location.host;
-
-            var link = document.getElementById("rss-link");
-
-            link.value = location + "/rssfilter?id=" + "${channel.channelId}" + "&keyword=" + keyword;
-        }
-
-    </script>
 </head>
 <body>
 <jsp:include page="header.jsp"/>
@@ -28,25 +15,47 @@
     <div id="channel-not-found">Channel not found.</div>
 </c:if>
 <c:if test="${not empty channel}">
+    <script language="javascript">
+
+        function showRss() {
+            var keyword = encodeURI(document.getElementById("rss-keyword").value);
+
+            document.getElementById("lookup-input-block-feed").style.display = "inline-block";
+            var location = window.location.host;
+
+            var link = document.getElementById("rss-link");
+            link.value = location + "/rssfilter?id=" + encodeURI("${channel.channelId}") + "&keyword=" + keyword;
+        }
+
+    </script>
     <div class="lookup-channel">
-        <div class="channel-image">
-            <a href=/filter?channelId=${channel.channelId}">
-                <img src="${channel.imageUrl}" alt="${channel.title}"/>
-            </a>
-        </div>
-        <div class="channel-body">
-            <a href=/filter?channelId=${channel.channelId}">
-                <h2>${channel.title}</h2>
-            </a>
+        <div class="lookup-description">
+            <div class="lookup-body">
+                <div id="channel-banner"><img src="${channel.bannerUrl}"/></div>
+                <a href=/filter?channelId=${channel.channelId}">
+                    <h2>${channel.title}</h2>
+                </a>
 
-            <p>${channel.description}</p>
-        </div>
+                <p>${channel.description}</p>
 
-        <input id="rss-keyword" type="text" placeholder="Enter filter keyword" />
-        <button type="button" name="Create feed" onclick="showRss();"></button>
-        <input id="rss-link" type="text"/>
-        <button type="button" value="Copy link" onclick="copyToClipboard()"/>
+                <div >
+                    <input class="lookup-input" id="rss-keyword" type="text" placeholder="Enter filter keyword"/>
+
+                    <span class="lookup-button-block">
+                        <input class="lookup-button" type="button" value="Create feed" onclick="showRss();"/>
+                    </span>
+                </div>
+                <div id="lookup-input-block-feed">
+                    <input class="lookup-input" id="rss-link" type="text"/>
+
+                    <span class="lookup-button-block">
+                        <input class="lookup-button" type="button" value="Copy link" onclick="copyToClipboard();"/>
+                    </span>
+                </div>
+            </div>
+        </div>
     </div>
+    <br/>
 </c:if>
 <jsp:include page="footer.jsp"/>
 </body>

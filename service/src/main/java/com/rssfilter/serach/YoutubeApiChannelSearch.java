@@ -3,9 +3,7 @@ package com.rssfilter.serach;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.services.youtube.YouTube;
-import com.google.api.services.youtube.model.ResourceId;
-import com.google.api.services.youtube.model.SearchListResponse;
-import com.google.api.services.youtube.model.SearchResult;
+import com.google.api.services.youtube.model.*;
 import com.rssfilter.entities.YoutubeChannel;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -76,23 +74,28 @@ public class YoutubeApiChannelSearch implements ChannelsSearch {
             YouTube youtube = new YouTube.Builder(new NetHttpTransport(), new JacksonFactory(), request -> {
             }).setApplicationName("rssfilter").build();
             try {
-                YouTube.Search.List search = youtube.search().list("snippet");
+                YouTube.Channels.List search = youtube.channels().list("snippet, brandingSettings");
                 search.setKey(apiKey);
-                search.setQ(channelId);
-                search.setType("channel");
+                search.setId(channelId);
 
-                SearchListResponse searchResponse = search.execute();
-                List<SearchResult> searchResultList = searchResponse.getItems();
+                ChannelListResponse channelsResponse = search.execute();
+                List<Channel> searchResultList = channelsResponse.getItems();
 
                 if (searchResultList != null) {
-                    SearchResult result = searchResultList.get(0);
+                    Channel result = searchResultList.get(0);
 
                     YoutubeChannel channel = new YoutubeChannel();
-                    channel.setChannelId(result.getSnippet().getChannelId());
+                    channel.setChannelId(channelId);
                     channel.setTitle(result.getSnippet().getTitle());
-                    channel.setDescription(result.getSnippet().getDescription());
-                    channel.setImageUrl(result.getSnippet().getThumbnails().getDefault().getUrl());
+                    String description = result.getSnippet().getDescription();
 
+                    if(description.length() > 400) {
+                        description = description.substring(0, 397) + "...";
+                    }
+
+                    channel.setDescription(description);
+                    channel.setImageUrl(result.getSnippet().getThumbnails().getDefault().getUrl());
+                    channel.setBannerUrl(result.getBrandingSettings().getImage().getBannerImageUrl());
                     return channel;
                 }
 

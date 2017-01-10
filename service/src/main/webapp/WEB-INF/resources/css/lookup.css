@@ -299,7 +299,7 @@ div {
     margin-bottom: 0px;
 }
 
-#title-lookup {
+#search-result-title-lookup {
     width: 1200px;
     margin: 0px auto;
     position: relative;
@@ -355,4 +355,89 @@ div {
 .channel-body a {
     display: inline-block;
     text-decoration: none;
+}
+
+.lookup-image {
+    float: left;
+    width: 100px;
+    height: 80px;
+    text-align: center;
+}
+
+.lookup-image img {
+    border: none;
+    height: 80px;
+    width: 80px;
+}
+
+.lookup-channel {
+    width: 100%;
+    display: block;
+}
+
+.lookup-description {
+    width: 1200px;
+    margin: 0px auto;
+}
+
+.lookup-body h2 {
+    color: #b3382c;
+    font-size: 1.4em;
+    height: 20px;
+}
+
+.lookup-body a {
+    text-decoration: none;
+}
+
+.lookup-body p {
+    color: #777777;
+    font-size: 1em;
+    height: 60px;
+}
+
+.lookup-input {
+    border-radius: 5px;
+    height: 35px;
+    margin: 0px 0px;
+    width: 1050px;
+    border: 0px;
+    background: #fff;
+    color: #666;
+    outline: none;
+    font-size: 12px;
+    text-align: left;
+    padding-left: 20px;
+}
+
+.lookup-button {
+    border-radius: 5px;
+    margin-left: 20px;
+    border: 0px;
+    height: 35px;
+    width: 120px;
+    color: #fff;
+    cursor: pointer;
+    cursor: hand;
+    background: #2483c1;
+}
+
+.lookup-input-block {
+    width: 1200px;
+    margin: 10px 10px 0 0;
+}
+
+#lookup-input-block-feed {
+    display: none;
+    padding-top: 10px;
+}
+
+#channel-banner {
+    padding-top: 20px;
+    text-align: center;
+}
+
+
+#channel-banner img {
+    width: 1200px;
 }
