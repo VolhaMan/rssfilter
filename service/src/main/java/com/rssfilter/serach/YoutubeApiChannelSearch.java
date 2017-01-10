@@ -29,7 +29,7 @@ public class YoutubeApiChannelSearch implements ChannelsSearch {
     @Override
     public List<YoutubeChannel> getChannelsList(String keyword) {
         List<YoutubeChannel> channels = new ArrayList<>();
-        if(keyword != null && !keyword.equals("")) {
+        if (keyword != null && !keyword.equals("")) {
             YouTube youtube = new YouTube.Builder(new NetHttpTransport(), new JacksonFactory(), request -> {
             }).setApplicationName("rssfilter").build();
 
@@ -43,14 +43,14 @@ public class YoutubeApiChannelSearch implements ChannelsSearch {
                 SearchListResponse searchResponse = search.execute();
                 List<SearchResult> searchResultList = searchResponse.getItems();
 
-                if(searchResultList != null) {
+                if (searchResultList != null) {
                     Iterator iterator = searchResultList.iterator();
 
-                    while(iterator.hasNext()) {
+                    while (iterator.hasNext()) {
                         SearchResult result = (SearchResult) iterator.next();
                         ResourceId resourceId = result.getId();
 
-                        if(resourceId.getKind().equals("youtube#channel")) {
+                        if (resourceId.getKind().equals("youtube#channel")) {
                             YoutubeChannel channel = new YoutubeChannel();
                             channel.setChannelId(result.getSnippet().getChannelId());
                             channel.setTitle(result.getSnippet().getTitle());
@@ -68,5 +68,39 @@ public class YoutubeApiChannelSearch implements ChannelsSearch {
         }
 
         return channels;
+    }
+
+    @Override
+    public YoutubeChannel getChannel(String channelId) {
+        if (channelId != null && !channelId.equals("")) {
+            YouTube youtube = new YouTube.Builder(new NetHttpTransport(), new JacksonFactory(), request -> {
+            }).setApplicationName("rssfilter").build();
+            try {
+                YouTube.Search.List search = youtube.search().list("snippet");
+                search.setKey(apiKey);
+                search.setQ(channelId);
+                search.setType("channel");
+
+                SearchListResponse searchResponse = search.execute();
+                List<SearchResult> searchResultList = searchResponse.getItems();
+
+                if (searchResultList != null) {
+                    SearchResult result = searchResultList.get(0);
+
+                    YoutubeChannel channel = new YoutubeChannel();
+                    channel.setChannelId(result.getSnippet().getChannelId());
+                    channel.setTitle(result.getSnippet().getTitle());
+                    channel.setDescription(result.getSnippet().getDescription());
+                    channel.setImageUrl(result.getSnippet().getThumbnails().getDefault().getUrl());
+
+                    return channel;
+                }
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return null;
     }
 }

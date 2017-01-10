@@ -33,20 +33,10 @@ function hideChannelsList() {
     document.getElementById("channelsList").style.display = "none";
 }
 
-function showRss() {
-    var url = document.getElementById("rssUrl").value;
-    var keyword = document.getElementById("rssKeyword").value;
 
-    document.getElementById("filteredRssFeed").style.display = "block";
-    var location = window.location.host;
-
-    var link = document.getElementById("rssFeedLink");
-    link.innerText = location + "/rssfilter?url=" + url + "&keyword=" + keyword;
-    link.href = location + "/rssfilter?url=" + url + "&keyword=" + keyword;
-}
 
 function copyToClipboard() {
-    var text = document.getElementById("rssFeedLink").href;
+    var text = document.getElementById("rss-link").value;
 
     if (window.clipboardData && window.clipboardData.setData) {
 

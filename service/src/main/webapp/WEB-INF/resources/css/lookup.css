@@ -169,7 +169,7 @@ div {
 
 .youtube-icon {
     display: inline-block;
-    background-image: url(https://cdn1.iconfinder.com/data/icons/logotypes/32/youtube-512.png);
+    background-image: url("/resources/images/youtube-icon.png");
     background-size: 38px, 38px;
     background-position: 0, 0;
     width: 38px;
@@ -186,7 +186,7 @@ div {
 
 #main-block {
     width: 100%;
-    height: 100% ;
+    height: 100%;
     background-color: #333333;
     background: url("/resources/images/main-background.jpg");
 }
@@ -268,3 +268,91 @@ div {
     color: #bbb;
 }
 
+#search-result {
+    padding: 20px 80px 10px 0px;
+    width: 1200px;
+    text-align: left;
+    margin: 0px auto;
+    color: #333333;
+}
+
+#search-result-header h1 {
+    padding-top: 20px;
+    margin-bottom: 0px;
+    padding-bottom: px;
+    color: #b3382c;
+    font-size: 1.2em;
+}
+
+#search-result-header p {
+    margin: 0px;
+    font-size: 0.7em;
+    color: #888;
+}
+
+#search-result-header {
+    width: 100%;
+    margin-top: -10px;
+    padding-bottom: 20px;
+    align-content: center;
+    background-color: white;
+    margin-bottom: 0px;
+}
+
+#title-lookup {
+    width: 1200px;
+    margin: 0px auto;
+    position: relative;
+    padding: 0px 80px 0px 0px;
+}
+
+#channels {
+    width: 1200px;
+}
+
+.channel-image img {
+    border: none;
+    height: 60px;
+    width: 60px;
+}
+
+.channel-image {
+    float: left;
+    width: 80px;
+    height: 60px;
+    text-align: center;
+}
+
+.channel-row {
+    background: #fff;
+    padding: 5px 0px;
+    margin: 2px auto;
+    border-bottom: 2px solid #e4e4e4;
+    width: 1200px;
+    height: 67px;
+}
+
+.channel-body {
+    width: 1100px;
+    height: 80px;
+    float: left;
+    position: relative;
+}
+
+.channel-body h2 {
+    margin: 0px auto;
+    color: #cc6767;
+    font-size: 1em;
+    height: 20px;
+}
+
+.channel-body p {
+    color: #888888;
+    font-size: 0.8em;
+    height: 60px;
+}
+
+.channel-body a {
+    display: inline-block;
+    text-decoration: none;
+}

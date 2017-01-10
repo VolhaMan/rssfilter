@@ -9,4 +9,5 @@ import java.util.List;
  */
 public interface ChannelsSearch {
     List<YoutubeChannel> getChannelsList(String keyword);
+    YoutubeChannel getChannel(String channelId);
 }

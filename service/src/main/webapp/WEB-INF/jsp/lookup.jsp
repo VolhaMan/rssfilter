@@ -8,27 +8,38 @@
     <link rel="stylesheet" type="text/css" href="/resources/css/lookup.css">
     <title>Youtube rss feed filter</title>
 </head>
-<body onload="setStyle();">
+<body>
 <jsp:include page="header.jsp"/>
-<div id="channelsList">
-    <table width="930px;">
+<div id="search-result-header">
+    <div id="title-lookup">
         <c:if test="${not empty channels}">
-            <tr>
-                <td colspan="2"><h4>Choose your channel:<br/></h4></td>
-            </tr>
+            <h1>Please select your YouTube channel</h1>
         </c:if>
-        <tr></tr>
-        <c:forEach var="channel" items="${channels}">
-            <tr onclick="processChannel(this, '${channel.channelId}');" name="channelRow" class="channelRow">
-                <td><img name="channelIcon" src="${channel.imageUrl}" width="60px" height="60px"></td>
-                <td>
-                    <div name="channelTitle">${channel.title}</div>
-                    <div name="channelDescription">${channel.description}</div>
-                </td>
-            </tr>
-        </c:forEach>
-    </table>
+        <c:if test="${not empty defaultSearch}">
+            <p>Search results for query '${defaultSearch}':</p>
+        </c:if>
+    </div>
 </div>
-<jsp:include page="footer.jsp" />
+<div id="search-result">
+    <div id="channels">
+        <c:forEach var="channel" items="${channels}">
+            <div class="channel-row">
+                <div class="channel-image">
+                    <a href=/filter?channelId=${channel.channelId}">
+                        <img src="${channel.imageUrl}" alt="${channel.title}"/>
+                    </a>
+                </div>
+                <div class="channel-body">
+                    <a href=/filter?channelId=${channel.channelId}">
+                        <h2>${channel.title}</h2>
+                    </a>
+
+                    <p>${channel.description}</p>
+                </div>
+            </div>
+        </c:forEach>
+    </div>
+</div>
+<jsp:include page="footer.jsp"/>
 </body>
 </html>

@@ -39,10 +39,11 @@ public class YoutubeChannelSearchController {
         return "lookup";
     }
 
-    @RequestMapping(value = "filter", method = RequestMethod.GET)
+    @RequestMapping(value = "/filter", method = RequestMethod.GET)
     public ModelAndView filter(@RequestParam("channelId") String channelId) {
         ModelAndView model = new ModelAndView("filter");
-        model.addObject("rssUrl", BASE_RSS + channelId);
+        YoutubeChannel channel = channelsSearch.getChannel(channelId);
+        model.addObject("channel",channel);
         return model;
     }
 }
