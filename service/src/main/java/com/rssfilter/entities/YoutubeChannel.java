@@ -8,6 +8,7 @@ public class YoutubeChannel {
     private String channelId;
     private String imageUrl;
     private String description;
+    private String bannerUrl;
 
     public String getTitle() {
         return this.title;
@@ -37,7 +38,9 @@ public class YoutubeChannel {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+    public void setDescription(String description) { this.description = description; }
+
+    public String getBannerUrl() {         return bannerUrl; }
+
+    public void setBannerUrl(String bannerUrl) { this.bannerUrl = bannerUrl; }
 }
