@@ -32,10 +32,19 @@
         <div class="lookup-description">
             <div class="lookup-body">
                 <div id="channel-banner"><img src="${channel.bannerUrl}"/></div>
-                <a href=/filter?channelId=${channel.channelId}">
+                <div class="lookup-image">
+                    <a href="//youtube.com/channel/${channel.channelId}">
+                        <img src="${channel.imageUrl}" alt="${channel.title}"/>
+                    </a>
+                </div>
+                <a href="//youtube.com/channel/${channel.channelId}">
                     <h2>${channel.title}</h2>
                 </a>
-
+                <div id="channel-statistic">
+                    <span class="stat">${channel.uploads} uploads</span>
+                    <span class="stat">${channel.subscribers} subscribers</span>
+                    <span class="stat">${channel.videoViews} video views</span>
+                </div>
                 <p>${channel.description}</p>
 
                 <div >
