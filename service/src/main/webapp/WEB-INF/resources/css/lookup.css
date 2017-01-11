@@ -358,6 +358,7 @@ div {
 }
 
 .lookup-image {
+    position: absolute;
     float: left;
     width: 100px;
     height: 80px;
@@ -365,9 +366,12 @@ div {
 }
 
 .lookup-image img {
-    border: none;
-    height: 80px;
-    width: 80px;
+    border: 8px solid white ;
+    border-radius: 10px;
+    height: 90px;
+    width: 90px;
+    margin-top: -30px;
+    margin-left: 20px;
 }
 
 .lookup-channel {
@@ -381,9 +385,22 @@ div {
 }
 
 .lookup-body h2 {
+    padding-left: 150px;
+    margin-top: 20px;
+    margin-bottom: 10px;
     color: #b3382c;
-    font-size: 1.4em;
+    font-size: 1.2em;
     height: 20px;
+}
+
+#channel-statistic {
+    padding-left: 150px;
+}
+
+.stat {
+    padding-right:50px;
+    font-size: 0.85em;
+    color:#999999;
 }
 
 .lookup-body a {
@@ -391,9 +408,10 @@ div {
 }
 
 .lookup-body p {
-    color: #777777;
-    font-size: 1em;
+    color: #666666;
+    font-size: 0.85em;
     height: 60px;
+    padding-top: 10px;
 }
 
 .lookup-input {

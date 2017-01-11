@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -23,6 +24,9 @@ public class YoutubeApiChannelSearch implements ChannelsSearch {
 
     @Value("${youtube.channels.count}")
     private long NUMBER_OF_CHANNELS_RETURNED;
+
+    @Value("${youtube.description.length}")
+    private int CHANNEL_DESCRIPTION_LENGTH;
 
     @Override
     public List<YoutubeChannel> getChannelsList(String keyword) {
@@ -74,7 +78,7 @@ public class YoutubeApiChannelSearch implements ChannelsSearch {
             YouTube youtube = new YouTube.Builder(new NetHttpTransport(), new JacksonFactory(), request -> {
             }).setApplicationName("rssfilter").build();
             try {
-                YouTube.Channels.List search = youtube.channels().list("snippet, brandingSettings");
+                YouTube.Channels.List search = youtube.channels().list("snippet, brandingSettings, statistics, ContentOwnerDetails");
                 search.setKey(apiKey);
                 search.setId(channelId);
 
@@ -89,13 +93,16 @@ public class YoutubeApiChannelSearch implements ChannelsSearch {
                     channel.setTitle(result.getSnippet().getTitle());
                     String description = result.getSnippet().getDescription();
 
-                    if(description.length() > 400) {
-                        description = description.substring(0, 397) + "...";
+                    if(description.length() > CHANNEL_DESCRIPTION_LENGTH) {
+                        description = description.substring(0, CHANNEL_DESCRIPTION_LENGTH - 3) + "...";
                     }
 
                     channel.setDescription(description);
                     channel.setImageUrl(result.getSnippet().getThumbnails().getDefault().getUrl());
                     channel.setBannerUrl(result.getBrandingSettings().getImage().getBannerImageUrl());
+                    channel.setUploads(result.getStatistics().getVideoCount());
+                    channel.setSubscribers(result.getStatistics().getSubscriberCount());
+                    channel.setVideoViews(result.getStatistics().getViewCount());
                     return channel;
                 }
 
