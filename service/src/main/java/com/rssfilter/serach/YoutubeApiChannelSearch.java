@@ -85,7 +85,7 @@ public class YoutubeApiChannelSearch implements ChannelsSearch {
                 ChannelListResponse channelsResponse = search.execute();
                 List<Channel> searchResultList = channelsResponse.getItems();
 
-                if (searchResultList != null) {
+                if (searchResultList != null && searchResultList.size() > 0) {
                     Channel result = searchResultList.get(0);
 
                     YoutubeChannel channel = new YoutubeChannel();
