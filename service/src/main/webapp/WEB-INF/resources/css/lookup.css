@@ -484,3 +484,10 @@ div {
     padding-bottom: 0px;
 }
 
+#channel-not-found{
+    color: #666666;
+    font-size: 1em;
+    height: 60px;
+    padding-top: 30px;
+    padding-left: 150px;
+}
