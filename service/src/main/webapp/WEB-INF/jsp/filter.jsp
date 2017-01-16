@@ -6,10 +6,14 @@
     <meta charset="UTF-8">
     <script src="/resources/js/lookup.js"></script>
     <link rel="stylesheet" type="text/css" href="/resources/css/lookup.css">
-    <title>Youtube rss feed filter</title>
-
+    <title>Video2Feed - rss feed for youtube channel</title>
+    <meta name="description" content="Watch only videos interesting for you from your favorite youtube channels!
+    You can set keywords and we will generate for you RSS feed which will have only matched videos. "/>
+    <meta name="keywords" content="rss feed, rss, feed, youtube, youtube channel, channel, video, filter, keyword, generate,
+    "/>
 </head>
 <body>
+<spring:htmlEscape defaultHtmlEscape="true"/>
 <jsp:include page="header.jsp"/>
 <c:if test="${empty channel}">
     <div id="channel-not-found">Channel not found.</div>
@@ -19,12 +23,16 @@
 
         function showRss() {
             var keyword = encodeURI(document.getElementById("rss-keyword").value);
+            var link = document.getElementById("rss-feed-link");
 
             document.getElementById("lookup-input-block-feed").style.display = "inline-block";
             var location = window.location.host;
 
-            var link = document.getElementById("rss-link");
-            link.value = location + "/rssfilter?id=" + encodeURI("${channel.channelId}") + "&keyword=" + keyword;
+            var linkInput = document.getElementById("rss-link");
+            var href = location + "/rssfilter?id=" + encodeURI("${channel.channelId}") + "&keyword=" + keyword;
+
+            link.href = href;
+            linkInput.value = href;
         }
 
     </script>
@@ -38,33 +46,40 @@
                     </a>
                 </div>
                 <a href="//youtube.com/channel/${channel.channelId}">
-                    <h2>${channel.title}</h2>
+                    <h2>Generate RSS feed for channel '${channel.title}'</h2>
                 </a>
                 <div id="channel-statistic">
                     <span class="stat">${channel.uploads} uploads</span>
                     <span class="stat">${channel.subscribers} subscribers</span>
                     <span class="stat">${channel.videoViews} video views</span>
                 </div>
-                <p>${channel.description}</p>
+                <!--<p>${channel.description}</p>-->
 
-                <div >
-                    <input class="lookup-input" id="rss-keyword" type="text" placeholder="Enter filter keyword"/>
+                <div id="filter-form">
+                    <h3>Specify filter criteria</h3>
+                    <div class="lookup-form-description">RSS feed will contain only those videos which has specified phrase in title or description.
+                        You can leave keyword field blank and RSS feed will contain all videos from this channel.</div>
+                    <div>
+                        <input class="lookup-input" id="rss-keyword" type="text" placeholder="Enter filter keyword"/>
 
                     <span class="lookup-button-block">
-                        <input class="lookup-button" type="button" value="Create feed" onclick="showRss();"/>
+                        <input class="lookup-button" type="button" value="Generate" onclick="showRss();"/>
                     </span>
-                </div>
-                <div id="lookup-input-block-feed">
-                    <input class="lookup-input" id="rss-link" type="text"/>
-
+                    </div>
+                    <div id="lookup-input-block-feed">
+                        <h3>Your RSS feed has been generated</h3>
+                        <div class="lookup-form-description">You can copy the link and add it to your RSS reader application.</div>
+                        <a id="rss-feed-link" target="_blank"> <input class="lookup-input" id="rss-link" type="text"
+                                                                      readonly="true"/></a>
                     <span class="lookup-button-block">
                         <input class="lookup-button" type="button" value="Copy link" onclick="copyToClipboard();"/>
                     </span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <br/>
+    <br/><br/>
 </c:if>
 <jsp:include page="footer.jsp"/>
 </body>

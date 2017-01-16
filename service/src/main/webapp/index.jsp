@@ -5,11 +5,16 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="description" content="Watch only videos interesting for you from your favorite youtube channels!
+    You can set keywords and we will generate for you RSS feed which will have only matched videos. "/>
+    <meta name="keywords" content="rss feed, rss, feed, youtube, youtube channel, channel, video, filter, keyword, generate,
+    "/>
     <script src="/resources/js/lookup.js"></script>
     <link rel="stylesheet" type="text/css" href="/resources/css/lookup.css">
-    <title>Video2Feed</title>
+    <title>Video2Feed - rss feed for youtube channel</title>
 </head>
 <body>
+<spring:htmlEscape defaultHtmlEscape="true" />
 <jsp:include page="WEB-INF/jsp/header.jsp" />
 <div id="main-block">
     <div id="main-text">
