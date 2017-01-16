@@ -366,11 +366,11 @@ div {
 }
 
 .lookup-image img {
-    border: 8px solid white ;
+    border: 8px solid white;
     border-radius: 10px;
-    height: 90px;
-    width: 90px;
-    margin-top: -30px;
+    height: 100px;
+    width: 100px;
+    margin-top: -20px;
     margin-left: 20px;
 }
 
@@ -389,18 +389,19 @@ div {
     margin-top: 20px;
     margin-bottom: 10px;
     color: #b3382c;
-    font-size: 1.2em;
+    font-size: 1.6em;
     height: 20px;
 }
 
 #channel-statistic {
     padding-left: 150px;
+    padding-top: 0px;
 }
 
 .stat {
-    padding-right:50px;
-    font-size: 0.85em;
-    color:#999999;
+    padding-right: 40px;
+    font-size: 0.8em;
+    color: #999999;
 }
 
 .lookup-body a {
@@ -409,21 +410,22 @@ div {
 
 .lookup-body p {
     color: #666666;
-    font-size: 0.85em;
+    font-size: 1em;
     height: 60px;
-    padding-top: 10px;
+    padding-top: 0px;
+    padding-left: 150px;
 }
 
 .lookup-input {
     border-radius: 5px;
-    height: 35px;
-    margin: 0px 0px;
-    width: 1050px;
+    height: 45px;
+    margin: 0px 0px 0px 150px;
+    width: 500px;
     border: 0px;
     background: #fff;
     color: #666;
     outline: none;
-    font-size: 12px;
+    font-size: 0.9em;
     text-align: left;
     padding-left: 20px;
 }
@@ -432,11 +434,12 @@ div {
     border-radius: 5px;
     margin-left: 20px;
     border: 0px;
-    height: 35px;
-    width: 120px;
+    height: 45px;
+    width: 100px;
     color: #fff;
     cursor: pointer;
     cursor: hand;
+    font-size: 0.9em;
     background: #2483c1;
 }
 
@@ -455,7 +458,29 @@ div {
     text-align: center;
 }
 
-
 #channel-banner img {
     width: 1200px;
 }
+
+#filter-form h3 {
+    padding-left: 150px;
+    font-size: 1.3em;
+    color: #666666;
+    margin-bottom: 5px;
+}
+
+.lookup-form-description {
+    color: #666666;
+    font-size: 0.85em;
+    padding-top: 0px;
+    padding-bottom: 10px;
+    padding-left: 150px;
+    width: 400px;
+}
+
+#filter-form {
+    margin-top: 30px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
