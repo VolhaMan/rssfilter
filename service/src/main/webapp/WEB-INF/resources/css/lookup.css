@@ -420,7 +420,7 @@ div {
     border-radius: 5px;
     height: 45px;
     margin: 0px 0px 0px 150px;
-    width: 500px;
+    width: 550px;
     border: 0px;
     background: #fff;
     color: #666;
@@ -467,6 +467,7 @@ div {
     font-size: 1.3em;
     color: #666666;
     margin-bottom: 5px;
+    font-weight: 400;
 }
 
 .lookup-form-description {
@@ -475,7 +476,7 @@ div {
     padding-top: 0px;
     padding-bottom: 10px;
     padding-left: 150px;
-    width: 400px;
+    width: 550px;
 }
 
 #filter-form {

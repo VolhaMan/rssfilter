@@ -23,7 +23,6 @@
 
         function showRss() {
             var keyword = encodeURI(document.getElementById("rss-keyword").value);
-            var link = document.getElementById("rss-feed-link");
 
             document.getElementById("lookup-input-block-feed").style.display = "inline-block";
             var location = window.location.host;
@@ -31,7 +30,6 @@
             var linkInput = document.getElementById("rss-link");
             var href = location + "/rssfilter?id=" + encodeURI("${channel.channelId}") + "&keyword=" + keyword;
 
-            link.href = href;
             linkInput.value = href;
         }
 
@@ -60,17 +58,16 @@
                     <div class="lookup-form-description">RSS feed will contain only those videos which has specified phrase in title or description.
                         You can leave keyword field blank and RSS feed will contain all videos from this channel.</div>
                     <div>
-                        <input class="lookup-input" id="rss-keyword" type="text" placeholder="Enter filter keyword"/>
-
-                    <span class="lookup-button-block">
-                        <input class="lookup-button" type="button" value="Generate" onclick="showRss();"/>
-                    </span>
+                        <input class="lookup-input" id="rss-keyword" type="text" placeholder="Enter filter criteria" onkeyup="submitOnEnter();"/>
+                        <span class="lookup-button-block">
+                            <input id="filter-button" class="lookup-button" type="button" value="Generate" onclick="showRss();"/>
+                        </span>
                     </div>
                     <div id="lookup-input-block-feed">
                         <h3>Your RSS feed has been generated</h3>
                         <div class="lookup-form-description">You can copy the link and add it to your RSS reader application.</div>
-                        <a id="rss-feed-link" target="_blank"> <input class="lookup-input" id="rss-link" type="text"
-                                                                      readonly="true"/></a>
+                        <input class="lookup-input" id="rss-link" type="text"
+                                                                      readonly="true"/>
                     <span class="lookup-button-block">
                         <input class="lookup-button" type="button" value="Copy link" onclick="copyToClipboard();"/>
                     </span>
