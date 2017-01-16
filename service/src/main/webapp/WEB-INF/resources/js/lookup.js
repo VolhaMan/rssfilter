@@ -21,3 +21,9 @@ function copyToClipboard() {
         }
     }
 }
+
+function submitOnEnter(){
+    if (event.keyCode == 13) {
+        document.getElementById("filter-button").click();
+    }
+}
